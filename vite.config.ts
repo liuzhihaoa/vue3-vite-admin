@@ -3,11 +3,14 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-22 14:16:50
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-05-22 17:07:36
+ * @LastEditTime: 2023-05-23 11:40:18
  * @description: 描述
  */
 import { defineConfig, loadEnv, ConfigEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 //这里使用path需要安装 @types/node,安装的@types/node只是为ts中使用node原生库提供类型支持,因为ts并不知道突然冒出来的path是哪里来的
 import path from 'path';
 
@@ -30,7 +33,15 @@ export default defineConfig(({ mode }: ConfigEnv) => {
         },
       },
     },
-    plugins: [vue()],
+    plugins: [
+      vue(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+    ],
     resolve: {
       alias: {
         '@': path.resolve('./src'), // @代替src
