@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-23 11:55:07
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-05-23 17:19:22
+ * @LastEditTime: 2023-05-25 16:55:22
  * @description: 描述
 -->
 <template>
@@ -24,15 +24,24 @@
     </el-form-item>
   </el-form>
   <div class="login-btn">
-    <el-button :icon="CloseBold" round size="large">重置</el-button>
-    <el-button :icon="UserFilled" type="primary" round size="large">登录</el-button>
+    <el-button :icon="CloseBold" round size="large" @click="resetForm(loginFormRef)">重置</el-button>
+    <el-button :icon="UserFilled" type="primary" round size="large" :loading="loading" @click="login(loginFormRef)"
+      >登录</el-button
+    >
   </div>
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
+import { ElNotification } from 'element-plus';
 import type { ElForm } from 'element-plus';
+import { loginApi } from '@/api/modules/login';
 import { CloseBold, UserFilled } from '@element-plus/icons-vue';
+import MD5 from 'js-md5';
+import { useUserStore } from '@/store/modules/user';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+const useStore = useUserStore();
 type FormInstance = InstanceType<typeof ElForm>;
 const loginFormRef = ref<FormInstance>();
 const loginRules = reactive({
@@ -43,6 +52,32 @@ const loginForm = reactive({
   username: '',
   password: '',
 });
+const loading = ref<boolean>(false);
+//login
+const login = (formEl: FormInstance | undefined) => {
+  if (!formEl) return;
+  formEl.validate(async (valid) => {
+    if (!valid) return;
+    loading.value = true;
+    try {
+      const { data } = await loginApi({ ...loginForm, password: MD5(loginForm.password) });
+      useStore.setToken(data.access_token);
+      router.push('/home/index');
+      ElNotification({
+        message: '欢迎登录 Admin',
+        type: 'success',
+        duration: 3000,
+      });
+    } finally {
+      loading.value = false;
+    }
+  });
+};
+//resetForm
+const resetForm = (formEl: FormInstance | undefined) => {
+  if (!formEl) return;
+  formEl.resetFields();
+};
 </script>
 <style scoped lang="scss">
 @import '../index.scss';
