@@ -3,12 +3,13 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-23 11:18:53
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-05-23 16:43:42
+ * @LastEditTime: 2023-05-26 10:54:35
  * @description: 描述
 -->
 <template>
   <div class="login-container">
     <div class="login-box">
+      <SwitchDark class="dark" />
       <div class="login-left">
         <img src="@/assets/images/login_left.png" alt="login" />
       </div>
@@ -23,6 +24,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import SwitchDark from '@/components/SwitchDark/index.vue';
 import LoginForm from './components/LoginForm.vue';
 </script>
 <style scoped lang="scss">
