@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-22 14:16:50
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-05-23 11:40:18
+ * @LastEditTime: 2023-05-25 16:04:17
  * @description: 描述
  */
 import { defineConfig, loadEnv, ConfigEnv } from 'vite';
@@ -18,6 +18,7 @@ import path from 'path';
 export default defineConfig(({ mode }: ConfigEnv) => {
   const root = process.cwd();
   const env = loadEnv(mode, root);
+  console.log(env.VITE_PROXY[0]);
   return {
     server: {
       host: '0.0.0.0',
@@ -26,7 +27,7 @@ export default defineConfig(({ mode }: ConfigEnv) => {
       https: false,
       proxy: {
         '/api': {
-          target: env.VITE_PROXY[1],
+          target: 'https://mock.mengxuegu.com/mock/629d727e6163854a32e8307e',
           changeOrigin: true,
           ws: true,
           rewrite: (path: string) => path.replace(/^\/api/, ''),

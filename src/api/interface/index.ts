@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-24 17:23:17
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-05-25 10:13:41
+ * @LastEditTime: 2023-05-26 14:30:43
  * @description: 描述
  */
 
@@ -25,5 +25,8 @@ export namespace Login {
   }
   export interface ResLogin {
     access_token: string;
+  }
+  export interface ResAuthbuttons {
+    [key: string]: string;
   }
 }

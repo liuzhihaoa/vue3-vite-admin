@@ -25,5 +25,6 @@
     "paths": { "@/*": ["src/*"] } //路径映射,配合别名使用
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"], //需要检测的文件
+  "exclude": ["node_modules", "dist", "**/*.js"],
   "references": [{ "path": "./tsconfig.node.json" }] //为文件进行不同配置
 }
