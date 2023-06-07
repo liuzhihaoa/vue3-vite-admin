@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-25 17:46:06
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-06 11:15:32
+ * @LastEditTime: 2023-06-06 15:59:56
  * @description: 描述
 -->
 <template>
@@ -31,6 +31,7 @@
       <el-container>
         <el-header>
           <ToolBarLeft />
+          <ToolBarRight />
         </el-header>
         <el-main><router-view></router-view></el-main>
         <el-footer>Footer</el-footer>
@@ -44,6 +45,7 @@ import { useGlobalStore } from '@/store/modules/global';
 import { computed } from 'vue';
 import SubMenu from './components/Menu/SubMenu.vue';
 import ToolBarLeft from './components/Header/ToolBarLeft.vue';
+import ToolBarRight from './components/Header/ToolBarRight.vue';
 
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();

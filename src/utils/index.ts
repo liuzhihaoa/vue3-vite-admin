@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-26 16:16:54
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-01 14:26:12
+ * @LastEditTime: 2023-06-07 10:24:41
  * @description: 描述
  */
 interface TreeNode {
@@ -45,4 +45,12 @@ export function getShowMenuList(menuList: Menu.MenuOptions[]): Menu.MenuOptions[
     item.children?.length > 0 && (item.children = getShowMenuList(item.children));
     return !item.meta?.isHide;
   });
+}
+
+export function getAllBreadcrumbList(menuList: Menu.MenuOptions[], parent = [], result: { [key: string]: any } = {}) {
+  for (const item of menuList) {
+    result[item.path] = [...parent, item];
+    if (item.children) getAllBreadcrumbList(item.children, result[item.path], result);
+  }
+  return result;
 }

@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-25 11:17:41
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-05-25 11:29:53
+ * @LastEditTime: 2023-06-07 17:27:48
  * @description: 描述
  */
 import { defineStore } from 'pinia';
@@ -15,7 +15,7 @@ export const useUserStore = defineStore({
   state: (): UserState => {
     return {
       token: '',
-      userInfo: { name: '' },
+      userInfo: { name: 'lzh' },
     };
   },
   getters: {},
