@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-23 11:07:54
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-02 14:11:28
+ * @LastEditTime: 2023-06-08 15:27:35
  * @description: 描述
  */
 import { createRouter, createWebHashHistory } from 'vue-router';
@@ -52,7 +52,7 @@ router.beforeEach(async (to, from, next) => {
 
   // 2.设置动态标题
   const title = import.meta.env.VITE_APP_TITLE;
-  document.title = title;
+  document.title = to.meta.title ? to.meta.title : title;
   //3.判断是否是访问登录页，有Token就在当前页面，没有Token就重置路由到登录页
   if (to.path.toLocaleLowerCase() === '/login') {
     if (userStore.token) return next(from.fullPath);
