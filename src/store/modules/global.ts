@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-25 11:17:33
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-07 11:18:53
+ * @LastEditTime: 2023-06-09 16:23:34
  * @description: 描述
  */
 import { defineStore } from 'pinia';
@@ -22,6 +22,8 @@ export const useGlobalStore = defineStore({
       assemblySize: 'default',
       // 语言
       language: 'zh',
+      // 当前页面是最大化
+      maximize: false,
     };
   },
   getters: {},

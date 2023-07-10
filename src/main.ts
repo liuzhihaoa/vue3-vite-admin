@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-22 16:17:16
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-07 14:00:48
+ * @LastEditTime: 2023-07-10 17:31:31
  * @description: 描述
  */
 import { createApp } from 'vue';
@@ -13,6 +13,10 @@ import App from './App.vue';
 
 // element css
 import 'element-plus/dist/index.css';
+// common css
+import '@/styles/common.scss';
+// element css
+import '@/styles/element.scss';
 // element dark css
 import 'element-plus/theme-chalk/dark/css-vars.css';
 // custom dark css

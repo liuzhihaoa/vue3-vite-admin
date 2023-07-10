@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-25 17:46:06
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-06 15:59:56
+ * @LastEditTime: 2023-06-07 18:07:43
  * @description: 描述
 -->
 <template>
@@ -33,7 +33,7 @@
           <ToolBarLeft />
           <ToolBarRight />
         </el-header>
-        <el-main><router-view></router-view></el-main>
+        <Main />
         <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
@@ -46,6 +46,7 @@ import { computed } from 'vue';
 import SubMenu from './components/Menu/SubMenu.vue';
 import ToolBarLeft from './components/Header/ToolBarLeft.vue';
 import ToolBarRight from './components/Header/ToolBarRight.vue';
+import Main from './components/Main/index.vue';
 
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();

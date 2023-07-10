@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-25 11:18:23
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-05 11:51:40
+ * @LastEditTime: 2023-06-09 10:20:07
  * @description: 描述
  */
 export type LayoutType = 'vertical' | 'classic' | 'transverse' | 'columns';
@@ -43,4 +43,17 @@ export interface AuthState {
   };
   authMenuList: Menu.MenuOptions[];
   routerName: string;
+}
+
+// TabsMenuProps
+export interface TabsMenuProps {
+  title: string;
+  icon: string;
+  path: string;
+  name: string;
+  close: boolean;
+}
+
+export interface TabState {
+  tabsMenuList: TabsMenuProps[];
 }

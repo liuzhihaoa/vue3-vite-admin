@@ -3,7 +3,7 @@
  * @email: liuzhihao@hatech.com.cn
  * @Date: 2023-05-26 11:42:25
  * @LastEditors: liuzhihao
- * @LastEditTime: 2023-06-06 15:08:10
+ * @LastEditTime: 2023-06-08 15:38:09
  * @description: 描述
 -->
 <template>
@@ -17,7 +17,7 @@
       </template>
       <SubMenu :menuList="subItem.children!" />
     </el-sub-menu>
-    <el-menu-item v-else :index="subItem.path">
+    <el-menu-item v-else :index="subItem.path" @click="handleClickMenu(subItem)">
       <el-icon>
         <component :is="subItem.meta.icon"></component>
       </el-icon>
@@ -29,7 +29,14 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router';
 defineProps<{ menuList: Menu.MenuOptions[] }>();
+
+const router = useRouter();
+const handleClickMenu = (subItem: Menu.MenuOptions) => {
+  if (subItem.meta.isLink) return window.open(subItem.meta.isLink, '_blank');
+  router.push(subItem.path);
+};
 </script>
 
 <style lang="scss"></style>
